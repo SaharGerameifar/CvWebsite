@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %} {{ userprofile.get_full_name }} {% endblock %}
+
+{% block content %}
+
+  <main id="main">
+
+    <!-- ======= Portfolio Details ======= -->
+    <div id="portfolio-details" class="portfolio-details">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-12">
+           
+            <div class="portfolio-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+                <video src="{{ portfolio.file_project.url }}" width="500px" height="400px" controls muted poster="{{ portfolio.cover.url }}" class="mx-auto"></video>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-12 portfolio-info">
+            <h3>{{ portfolio.title }}</h3>
+            <p>{{ portfolio.describtion|linebreaks }}</p>
+            <ul>
+               <li> <a href="http://{{portfolio.link}}" target="_blank" rel="noopener noreferrer" class="btn btn-primary">{% translate 'لينك پروژه' %}</a></li>
+                           
+            </ul>      
+          </div>
+        </div>
+      </div>
+    </div>
+    </div><!-- End Portfolio Details -->
+
+  </main><!-- End #main -->
+
+{% endblock %}

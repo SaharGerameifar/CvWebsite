@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+{% block title %} {{ userprofile.get_full_name }} {% endblock %}
+
+{% block content %}
+  <main id="main">
+
+    <!-- ======= certificate Details ======= -->
+    <div id="certificate-details" class="certificate-details">
+      <div class="container">
+
+        <div class="row">
+          <div class="col-lg-8">
+           
+            <div class="certificate-details-slider swiper">
+              <div class="swiper-wrapper align-items-center">
+                <img src="{{ certificate.thumbnail.url }}" alt="{{ certificate.name }}" class="img-fluid">
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-4 certificate-info">
+            <h3>{{ certificate.name }}</h3>
+            <ul>
+              <li><strong>{% translate 'از' %} : </strong> <p>{{ certificate.location }}</p> </li>
+              <li><strong>{% translate 'تاريخ دريافت' %} : </strong> <p> {{ certificate.Mdate }}</p></li>
+              <li><a href="http://{{ certificate.verify_link }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary"> {% translate 'لينك اعتبارسنجي' %}</a> </li>
+            </ul>      
+          </div>
+        </div>
+      </div>
+    </div>
+    </div><!-- End certificate Details -->
+
+  </main><!-- End #main -->
+
+{% endblock %}
