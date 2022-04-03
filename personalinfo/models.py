@@ -12,7 +12,7 @@ class Skill(models.Model):
     class Meta:
         verbose_name_plural = 'مهارت ها'
         verbose_name = 'مهارت'
-    
+
     name = TranslatedField(
          models.CharField(max_length=20, blank=True, null=True),
          {"fa":{"verbose_name":" عنوان مهارت در سايت فارسي "},
@@ -21,7 +21,7 @@ class Skill(models.Model):
     )
     score = models.IntegerField(default=80, blank=True, null=True, verbose_name = 'امتياز')
     is_key_skill = models.BooleanField(default=True, verbose_name = 'فعال/غيرفعال')
-    
+
     def __str__(self):
         return self.name
 
@@ -31,7 +31,7 @@ class User(AbstractUser):
     class Meta:
         verbose_name_plural = 'پروفايل كاربري'
         verbose_name = 'پروفايل'
-    
+
     # user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name = 'كاربر')
     first_name = TranslatedField(
         models.CharField(max_length=30, blank=True, null=True),
@@ -118,9 +118,9 @@ class User(AbstractUser):
          "en":{"verbose_name":" رشته تحصيلي در سايت انگليسي "},
          }
     )
-    
+
     phone = models.CharField(max_length=20, blank=True, null=True, verbose_name="شماره تماس")
-    
+
     city = TranslatedField(
         models.CharField(max_length=50, blank=True, null=True),
          {"fa":{"verbose_name":" شهر محل زندگي در سايت فارسي "},
@@ -138,7 +138,7 @@ class User(AbstractUser):
     freelancer = models.BooleanField(default=True, verbose_name = 'امكان فريلنسري')
 
     github = models.CharField(max_length=100, blank=True, null=True, verbose_name=" يوزرنيم گيت هاب")
-            
+
     instagram = models.CharField(max_length=100, blank=True, null=True, verbose_name=" يوزرنيم اينستاگرام")
 
     whatsapp = models.CharField(max_length=100, blank=True, null=True, verbose_name="  شماره واتس اپ")
@@ -159,14 +159,14 @@ class User(AbstractUser):
     def __str__(self):
         if self.get_full_name():
             return f'{self.first_name} {self.last_name}'
-        return f'{self.username}'  
+        return f'{self.username}'
 
 
     def jbirthday(self):
         return jalali_converter(self.birthday)
 
     jbirthday.short_description = " تاريخ تولد"
-    
+
 
     def Mbirthday(self):
         return f'{self.birthday.year}/{self.birthday.month}'
@@ -175,7 +175,7 @@ class User(AbstractUser):
 
 
 class ContactProfile(models.Model):
-    
+
     class Meta:
         verbose_name_plural = 'تماس ها '
         verbose_name = 'تماس'
@@ -193,12 +193,12 @@ class ContactProfile(models.Model):
 
 
     def __str__(self):
-        return f'{self.name}'  
+        return f'{self.name}'
 
     def jtimestamp(self):
         return full_jalali_converter(self.timestamp)
 
-    jtimestamp.short_description = " تاريخ ارسال"     
+    jtimestamp.short_description = " تاريخ ارسال"
 
 
 class Testimonial(models.Model):
@@ -206,7 +206,7 @@ class Testimonial(models.Model):
     class Meta:
         verbose_name_plural = 'مراجع'
         verbose_name = 'مرجع'
-       
+
 
     name = TranslatedField(
          models.CharField(max_length=200, blank=True, null=True),
@@ -238,7 +238,7 @@ class Testimonial(models.Model):
     is_active = models.BooleanField(default=True, verbose_name = 'فعال/غيرفعال')
 
     def __str__(self):
-        return self.name              
+        return self.name
 
 
 class Certificate(models.Model):
@@ -247,11 +247,11 @@ class Certificate(models.Model):
         verbose_name_plural = 'سرتيفيكيت ها'
         verbose_name = 'سرتيفيكت'
 
-  
+
     thumbnail = models.ImageField(blank=True, null=True, upload_to="certificate", verbose_name = 'تصوير')
-    
+
     date = models.DateTimeField(blank=True, null=True, verbose_name = 'تاريخ دريافت')
-    
+
     name = TranslatedField(
         models.CharField(max_length=200, blank=True, null=True),
          {"fa":{"verbose_name":" عنوان مدرك در سايت فارسي "},
@@ -267,10 +267,10 @@ class Certificate(models.Model):
     )
 
     verify_link = models.CharField(max_length=500, blank=True, null=True, verbose_name = 'لينك اعتبار سنجي')
-   
+
     is_active = models.BooleanField(default=True, verbose_name = 'فعال/غيرفعال')
 
-  
+
     def __str__(self):
         return self.name
 
@@ -290,14 +290,14 @@ class Interested(models.Model):
     )
 
     active = models.BooleanField(verbose_name='فعال/غیر فعال', default=True)
-   
+
 
     class Meta:
         verbose_name_plural = 'علاقه مندي ها'
         verbose_name = 'علاقه مندي'
 
     def __str__(self):
-        return self.title        
+        return self.title
 
 
 class Academic(models.Model):
@@ -313,6 +313,8 @@ class Academic(models.Model):
     start = models.DateTimeField(blank=True, null=True, verbose_name = 'تاريخ شروع')
 
     end = models.DateTimeField(blank=True, null=True, verbose_name = 'تاريخ پايان')
+
+    to_now =  models.BooleanField(default=False, verbose_name = 'تا کنون')
 
     describtion =  TranslatedField(
         models.TextField(blank=True, null=True),
@@ -375,7 +377,7 @@ class Academic(models.Model):
             "fa":{"verbose_name":"دانشگاه محل تحصيل در سايت فارسي "},
             "en":{"verbose_name":" دانشگاه محل تحصيل در سايت انگليسي "},
          }
-    )     
+    )
 
     city_university = TranslatedField(
         models.CharField(max_length=50, blank=True, null=True),
@@ -383,7 +385,7 @@ class Academic(models.Model):
             "fa":{"verbose_name":"شهر دانشگاه محل تحصيل در سايت فارسي "},
             "en":{"verbose_name":" شهر دانشگاه محل تحصيل در سايت انگليسي "},
          }
-    )     
+    )
 
     country_university = TranslatedField(
         models.CharField(max_length=50, blank=True, null=True),
@@ -391,25 +393,25 @@ class Academic(models.Model):
             "fa":{"verbose_name":"كشور دانشگاه محل تحصيل در سايت فارسي "},
             "en":{"verbose_name":" كشور دانشگاه محل تحصيل در سايت انگليسي "},
          }
-    )     
+    )
 
-    position = models.IntegerField(verbose_name='پوزیشن') 
+    position = models.IntegerField(verbose_name='پوزیشن')
 
     def __str__(self):
-        return f'{self.university}'  
+        return f'{self.university}'
 
 
     def jstart(self):
         return jalali_converter(self.start)
 
     jstart.short_description = " تاريخ شروع"
-    
+
 
     def jend(self):
         return jalali_converter(self.end)
 
     jend.short_description = " تاريخ پايان"
-    
+
 
     def Mstart(self):
         return f'{self.start.year}/{self.start.month}'
@@ -437,7 +439,7 @@ class Job(models.Model):
             "fa":{"verbose_name":"عنوان شغل در سايت فارسي "},
             "en":{"verbose_name":" عنوان شغل در سايت انگليسي "},
          }
-    )     
+    )
 
     company = TranslatedField(
         models.CharField(max_length=200, blank=True, null=True),
@@ -445,15 +447,15 @@ class Job(models.Model):
             "fa":{"verbose_name":"كمپاني در سايت فارسي "},
             "en":{"verbose_name":"كمپاني در سايت انگليسي "},
          }
-    )     
-    
+    )
+
     city_company = TranslatedField(
         models.CharField(max_length=50, blank=True, null=True),
          {
             "fa":{"verbose_name":"شهر كمپاني در سايت فارسي "},
             "en":{"verbose_name":"شهر كمپاني در سايت انگليسي "},
          }
-    )     
+    )
 
     country_company = TranslatedField(
         models.CharField(max_length=50, blank=True, null=True),
@@ -461,11 +463,13 @@ class Job(models.Model):
             "fa":{"verbose_name":"كشور كمپاني در سايت فارسي "},
             "en":{"verbose_name":"كشور كمپاني در سايت انگليسي "},
          }
-    )     
+    )
 
     start = models.DateTimeField(blank=True, null=True, verbose_name = 'تاريخ شروع')
 
     end = models.DateTimeField(blank=True, null=True, verbose_name = 'تاريخ پايان')
+
+    to_now =  models.BooleanField(default=False, verbose_name = 'تا کنون')
 
     describtion = TranslatedField(
         models.TextField(blank=True, null=True),
@@ -473,19 +477,19 @@ class Job(models.Model):
             "fa":{"verbose_name":"توضيحات در سايت فارسي "},
             "en":{"verbose_name":"توضيحات در سايت انگليسي "},
          }
-    )     
+    )
 
-    position = models.IntegerField(verbose_name='پوزیشن') 
+    position = models.IntegerField(verbose_name='پوزیشن')
 
     def __str__(self):
-        return f'{self.job_title}'  
+        return f'{self.job_title}'
 
 
     def jstart(self):
         return jalali_converter(self.start)
 
     jstart.short_description = " تاريخ شروع"
-    
+
 
     def jend(self):
         return jalali_converter(self.end)
@@ -520,7 +524,7 @@ class Publication(models.Model):
             "fa":{"verbose_name":"عنوان مقاله در سايت فارسي "},
             "en":{"verbose_name":"عنوان مقاله در سايت انگليسي "},
          }
-    )     
+    )
 
     link = models.CharField(max_length=200, blank=True, null=True, verbose_name = 'لينك')
 
@@ -530,13 +534,13 @@ class Publication(models.Model):
             "fa":{"verbose_name":"وضعيت مقاله در سايت فارسي "},
             "en":{"verbose_name":"وضعيت مقاله در سايت انگليسي "},
          }
-    )     
+    )
 
 
-    position = models.IntegerField(verbose_name='پوزیشن') 
+    position = models.IntegerField(verbose_name='پوزیشن')
 
     def __str__(self):
-        return f'{self.title}'  
+        return f'{self.title}'
 
 
     def jdate(self):
@@ -550,13 +554,13 @@ class Publication(models.Model):
 
     Mdate.short_description = " تاريخ انتشار"
 
-    
+
 class Portfolio(models.Model):
 
     class Meta:
         verbose_name_plural = 'پرتفوليو'
         verbose_name = 'پروژه'
-        
+
 
     title = TranslatedField(
         models.CharField(max_length=200, blank=True, null=True),
@@ -564,8 +568,8 @@ class Portfolio(models.Model):
             "fa":{"verbose_name":"عنوان پروژه در سايت فارسي "},
             "en":{"verbose_name":"عنوان پروژه در سايت انگليسي "},
          }
-    )     
-    
+    )
+
     link = models.CharField(max_length=200, blank=True, null=True, verbose_name = 'لينك پروژه')
 
     file_project = models.FileField(blank=True, null=True, upload_to="project", verbose_name = 'فايل پروژه')
@@ -578,17 +582,17 @@ class Portfolio(models.Model):
             "fa":{"verbose_name":"توضيحات پروژه در سايت فارسي "},
             "en":{"verbose_name":"توضيحات پروژه در سايت انگليسي "},
          }
-    )     
-    
+    )
+
     def __str__(self):
-        return f'{self.title}'  
+        return f'{self.title}'
 
 
 class Service(models.Model):
     class Meta:
         verbose_name_plural = 'سرويس ها'
         verbose_name = 'سرويس'
-    
+
     title = TranslatedField(
          models.CharField(max_length=20, blank=True, null=True),
          {"fa":{"verbose_name":" نام سرويس در سايت فارسي "},
@@ -602,9 +606,8 @@ class Service(models.Model):
             "fa":{"verbose_name":"توضيحات سرويس در سايت فارسي "},
             "en":{"verbose_name":"توضيحات سرويس در سايت انگليسي "},
          }
-    )    
-    
+    )
+
     def __str__(self):
         return self.title
 
- 
