@@ -9,24 +9,24 @@
 
     <!-- ======= Header ======= -->
     <header id="header">
-      
+
       <div class="container">
         <div class="toggel">
-          {% if LANGUAGE_CODE == 'fa' %} 
+          {% if LANGUAGE_CODE == 'fa' %}
             <a href="{% url 'personalinfo:change-lang' %}?lang=en&next=/en/{{request.path|slice:'4:'}}" class="btn btn-primary btn-sm">en</a>
-          {% elif LANGUAGE_CODE == 'en' %} 
+          {% elif LANGUAGE_CODE == 'en' %}
             <a href="{% url 'personalinfo:change-lang' %}?lang=fa&next=/fa/{{request.path|slice:'4:'}}" class="btn btn-primary btn-sm">fa</a>
-          {% endif %} 
-        </div> 
+          {% endif %}
+        </div>
         <h1>
             <a href="{% url 'personalinfo:home' %}">
                 {% if userprofile.get_full_name %}
                   {{ userprofile.get_full_name }}
-                {% else %}  
+                {% else %}
                   {{ userprofile.username }}
                 {% endif %}
-            </a> 
-            
+            </a>
+
         </h1>
         <!-- Uncomment below if you prefer to use an image logo -->
         <!-- <a href="index.html" class="mr-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a> -->
@@ -41,7 +41,7 @@
             <li><a class="nav-link" href="#services"> {% translate 'سرويس ها' %}</a></li>
             <li><a class="nav-link" href="#portfolio">{% translate 'پرتفوليو' %}</a></li>
             <li><a class="nav-link" href="#contact">{% translate 'تماس' %}</a></li>
-            
+
           </ul>
           <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -69,13 +69,13 @@
 
         <div class="section-title">
           <h2>{% translate 'درباره من' %} </h2>
-          
+
         </div>
 
         <div class="row">
           <div class="col-lg-4" data-aos="fade-right">
             <!-- <img src="{{ userprofile.avatar.url }}" class="img-fluid" alt="{{ userprofile.user.get_full_name }}"> -->
-                      
+
             <div class="home__img">
               <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
                   <mask id="mask0" mask-type="alpha">
@@ -84,11 +84,11 @@
                   <g mask="url(#mask0)">
                       <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
                         <image class="home__blob-img" x="50" y="60" href="{{ userprofile.avatar.url }}"/>
-                                         
+
                   </g>
               </svg>
             </div>
-          
+
           </div>
           <div class="col-lg-8 pt-4 pt-lg-0 content" data-aos="fade-left">
             <h3>{{ userprofile.title }}</h3>
@@ -99,21 +99,21 @@
               <div class="col-lg-6">
                 <ul>
                   <li><i class="bi bi-chevron-right"></i> <strong>{% translate 'تاريخ تولد' %}: </strong>
-                    {% if LANGUAGE_CODE == 'fa' %} 
+                    {% if LANGUAGE_CODE == 'fa' %}
                       <span>
-                        {{ userprofile.jbirthday }} 
+                        {{ userprofile.jbirthday }}
                       </span>
-                    {% elif LANGUAGE_CODE == 'en' %}    
+                    {% elif LANGUAGE_CODE == 'en' %}
                       <span>
-                        {{ userprofile.Mbirthday }} 
+                        {{ userprofile.Mbirthday }}
                       </span>
-                    {% endif %}  
+                    {% endif %}
                   </li>
                   <li><i class="bi bi-chevron-right"></i> <strong>{% translate 'ايميل' %}: </strong> <span> {{ userprofile.email }} </span></li>
 
                   <li><i class="bi bi-chevron-right"></i> <strong>{% translate 'آدرس' %}: </strong> <span> {{ userprofile.city }} , {{ userprofile.country }} </span></li>
-                  <li><i class="bi bi-chevron-right"></i> <strong> {% translate 'فريلنسري' %}: </strong> 
-                    <span> 
+                  <li><i class="bi bi-chevron-right"></i> <strong> {% translate 'فريلنسري' %}: </strong>
+                    <span>
                       {% if userprofile.freelancer %}
                         <i class="bi bi-circle-fill" style="color: #3e6ff4; "></i>
                       {% else %}
@@ -132,38 +132,38 @@
                         <span>زير ديپلم </span>
                       {% elif userprofile.last_degree == 2 %}
                         <span> ديپلم </span>
-                      {% elif userprofile.last_degree == 3 %} 
+                      {% elif userprofile.last_degree == 3 %}
                         <span> كارشناسي </span>
-                      {% elif userprofile.last_degree == 4 %} 
+                      {% elif userprofile.last_degree == 4 %}
                         <span>كارشناسي ارشد  </span>
                       {% elif userprofile.last_degree == 5 %}
                         <span> دكترا </span>
-                      {% else %} 
+                      {% else %}
                         <span> فوق دكترا </span>
-                      {% endif %}  
-                      
+                      {% endif %}
+
                     {% endif %}
-                      
+
                     {% if LANGUAGE_CODE == 'en' %}
                       {% if userprofile.last_degree == 1 %}
                         <span>High School </span>
                       {% elif userprofile.last_degree == 2 %}
                         <span> Diploma </span>
-                      {% elif userprofile.last_degree == 3 %} 
+                      {% elif userprofile.last_degree == 3 %}
                         <span> BA/BSc </span>
-                      {% elif userprofile.last_degree == 4 %} 
+                      {% elif userprofile.last_degree == 4 %}
                         <span> MA/MSc </span>
                       {% elif userprofile.last_degree == 5 %}
                         <span> PhD </span>
-                      {% else %} 
+                      {% else %}
                         <span> Post Doctoral </span>
-                      {% endif %}  
-                      
+                      {% endif %}
+
                     {% endif %}
-                      
+
                   </li>
 
-                  
+
                   <li><a download href="{{ userprofile.cv.url }}" target="_blank" rel="noopener noreferrer" class="btn btn-primary mx-3"> {% translate 'دانلود رزومه' %} </a></li>
                 </ul>
               </div>
@@ -180,7 +180,7 @@
       <div class="counts container mt-5">
 
         <div class="row">
-        
+
           <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
             <div class="count-box">
               <i class="bi bi-journal-richtext"></i>
@@ -229,7 +229,7 @@
               </div>
 
             </div>
-          {% endfor %}  
+          {% endfor %}
         </div>
 
       </div><!-- End Skills -->
@@ -242,14 +242,14 @@
         </div>
 
         <div class="row">
-          {% for intereste in interestes %}  
+          {% for intereste in interestes %}
             <div class="col-lg-3 col-md-4 mt-4">
               <div class="icon-box">
                 <i class="ri-file-list-3-line" ></i>
                 <h3>{{ intereste.title }}</h3>
               </div>
             </div>
-          {% endfor %}  
+          {% endfor %}
         </div>
 
       </div><!-- End Interests -->
@@ -271,11 +271,11 @@
                       {{ testimonial.describtion }}
                     <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                   </p>
-                                
+
                   <img src="{% static 'img/default.png' %}" class="testimonial-img" alt="{{ testimonial.name }}">
                   <h3> {{ testimonial.name }} </h3>
                   <h4> {{ testimonial.role }} </h4>
-      
+
                   <div class="row mt-3">
                     <div class="col-lg-6">
                       <ul class="testimonials-info">
@@ -284,14 +284,14 @@
                         <li><i class="bi bi-chevron-right"></i> <strong>{% translate 'تلفن' %}  : </strong> <span>{{ testimonial.phone }}  </span></li>
                       </ul>
                     </div>
-                  
+
                   </div>
-                
+
                 </div>
               </div><!-- End testimonial item -->
-            {% endfor %}  
+            {% endfor %}
 
-          
+
 
           </div>
           <div class="swiper-pagination"></div>
@@ -311,7 +311,7 @@
 
         <div class="section-title">
           <h2>{% translate 'رزومه من' %} </h2>
-          
+
         </div>
 
         <div class="row">
@@ -323,7 +323,7 @@
               <p>
               <ul>
                 <li>{{ userprofile.city }},{{ userprofile.country }}</li>
-            
+
                 <li>{{ userprofile.email }}</li>
               </ul>
               </p>
@@ -338,25 +338,30 @@
                         <span>زير ديپلم </span>
                       {% elif academic.degree == 2 %}
                         <span> ديپلم </span>
-                      {% elif academic.degree == 3 %} 
+                      {% elif academic.degree == 3 %}
                         <span> كارشناسي </span>
-                      {% elif academic.degree == 4 %} 
+                      {% elif academic.degree == 4 %}
                         <span>كارشناسي ارشد  </span>
                       {% elif academic.degree == 5 %}
                         <span> دكترا </span>
-                      {% else %} 
+                      {% else %}
                         <span> فوق دكترا </span>
-                      {% endif %} 
-                        <span>{{ academic.course }}</span> 
+                      {% endif %}
+                        <span>{{ academic.course }}</span>
                     </h4>
-                    <h5>{{ academic.jstart }} - {{ academic.jend }}</h5>
+                    {% if academic.to_now %}
+                        <h5>{{ academic.jstart }} - تا کنون</h5>
+                    {% else %}
+                        <h5>{{ academic.jstart }} - {{ academic.jend }}</h5>
+                    {% endif %}
+
                     <p><em>{% translate ' دانشگاه' %}  {{ academic.university }}, {{ academic.city_university }} , {{ academic.country_university }}</em></p>
                     <p>{% translate 'معدل ' %}  : <strong class="badge-primary">{{ academic.gpa }}</strong> </p>
                     <p>{{ academic.describtion|linebreaks }}</p>
                   </div>
                 {% endfor %}
             {% endif %}
-              
+
             {% if LANGUAGE_CODE == 'en' %}
                 {% for academic in academics %}
                   <div class="resume-item">
@@ -365,18 +370,23 @@
                         <span>High School </span>
                       {% elif academic.degree == 2 %}
                         <span> Diploma </span>
-                      {% elif academic.degree == 3 %} 
+                      {% elif academic.degree == 3 %}
                         <span> BA/BSc </span>
-                      {% elif academic.degree == 4 %} 
+                      {% elif academic.degree == 4 %}
                         <span> MA/MSc </span>
                       {% elif academic.degree == 5 %}
                         <span> PhD </span>
-                      {% else %} 
+                      {% else %}
                         <span> Post Doctoral </span>
-                      {% endif %} 
-                        <span>{{ academic.course }}</span> 
+                      {% endif %}
+                        <span>{{ academic.course }}</span>
                     </h4>
-                    <h5>{{ academic.Mstart }} - {{ academic.Mend }}</h5>
+                    {% if academic.to_now %}
+                        <h5>{{ academic.Mstart }} - Present </h5>
+                    {% else %}
+                        <h5>{{ academic.Mstart }} - {{ academic.Mend }}</h5>
+                    {% endif %}
+
                     <p><em>{% translate ' دانشگاه' %}  {{ academic.university }}, {{ academic.city_university }} , {{ academic.country_university }}</em></p>
                     <p>{% translate 'معدل ' %}  : <strong class="badge-primary">{{ academic.gpa }}</strong> </p>
                     <p>{{ academic.describtion|linebreaks }}</p>
@@ -386,43 +396,53 @@
           </div>
           <div class="col-lg-6">
             <h3 class="resume-title">{% translate 'تجارب كاري' %}  </h3>
-            
+
             {% for job in jobs %}
               <div class="resume-item">
                 <h4>{{ job.job_title}}</h4>
                 {% if LANGUAGE_CODE == 'en' %}
-                  <h5>{{ job.Mstart }} - {{ job.Mend }}</h5>
-                {% elif LANGUAGE_CODE == 'fa' %}  
-                  <h5>{{ job.jstart }} - {{ job.jend }}</h5>
-                {% endif %}  
+                    {% if job.to_now %}
+                        <h5>{{ job.Mstart }} - Present</h5>
+                    {% else %}
+                        <h5>{{ job.Mstart }} - {{ job.Mend }}</h5>
+                    {% endif %}
+
+                {% elif LANGUAGE_CODE == 'fa' %}
+                    {% if job.to_now %}
+                        <h5>{{ job.jstart }} - تا کنون</h5>
+                    {% else %}
+                        <h5>{{ job.jstart }} - {{ job.jend }}</h5>
+                    {% endif %}
+
+                {% endif %}
                 <p><em>{{ job.company }}, {{ job.city_company }} , {{ job.country_company }}</em></p>
                 <p class="px-3">
                   {{ job.describtion|linebreaks }}
                 </p>
               </div>
-            {% endfor %}  
+            {% endfor %}
           </div>
         </div>
 
         <div class="section-title">
           <h2> {% translate 'مقالات من' %}  </h2>
-          
+
         </div>
-    
+
         {% for publication in publications %}
           <div class="resume-item">
             <h6 class="publication-title"><a href="{{ publication.link}}" target="_blank" rel="noopener noreferrer">{{ publication.title}}</a></h6>
             {% if LANGUAGE_CODE == 'en' %}
               <h5>{{ publication.Mdate }}</h5>
-            {% elif LANGUAGE_CODE == 'fa' %}  
+            {% elif LANGUAGE_CODE == 'fa' %}
               <h5>{{ publication.jdate }}</h5>
-            {% endif %}  
-            
+            {% endif %}
+
             <p><em>{{ publication.status }}</em></p>
           </div>
         {% endfor %}
 
-      
+
       </div>
     </section><!-- End Resume Section -->
 
@@ -430,12 +450,12 @@
     <section id="certificate" class="certificate">
       <div class="container">
 
-        
+
         <div class="section-title">
           <h2> {% translate 'سرتيفيكيت هاي من ' %}  </h2>
-          
+
         </div>
-        
+
           <div class="row certificate-container">
             {% if academic.thumbnail %}
                     {% for academic in academics %}
@@ -449,16 +469,16 @@
                                       <span>زير ديپلم </span>
                                     {% elif academic.degree == 2 %}
                                       <span> ديپلم </span>
-                                    {% elif academic.degree == 3 %} 
+                                    {% elif academic.degree == 3 %}
                                       <span> كارشناسي </span>
-                                    {% elif academic.degree == 4 %} 
+                                    {% elif academic.degree == 4 %}
                                       <span>كارشناسي ارشد  </span>
                                     {% elif academic.degree == 5 %}
                                       <span> دكترا </span>
-                                    {% else %} 
+                                    {% else %}
                                       <span> فوق دكترا </span>
-                                    {% endif %} 
-                                      <span>{{ academic.course }}</span> 
+                                    {% endif %}
+                                      <span>{{ academic.course }}</span>
                                   </h4>
 
                               {% endif %}
@@ -469,16 +489,16 @@
                                       <span>High School </span>
                                     {% elif academic.degree == 2 %}
                                       <span> Diploma </span>
-                                    {% elif academic.degree == 3 %} 
+                                    {% elif academic.degree == 3 %}
                                       <span> BA/BSc </span>
-                                    {% elif academic.degree == 4 %} 
+                                    {% elif academic.degree == 4 %}
                                       <span> MA/MSc </span>
                                     {% elif academic.degree == 5 %}
                                       <span> PhD </span>
-                                    {% else %} 
+                                    {% else %}
                                       <span> Post Doctoral </span>
-                                    {% endif %} 
-                                      <span>{{ academic.course }}</span> 
+                                    {% endif %}
+                                      <span>{{ academic.course }}</span>
                                   </h4>
                               {% endif %}
                             <div class="certificate-links">
@@ -487,7 +507,7 @@
                           </div>
                         </div>
                       </div>
-                    {% endfor %} 
+                    {% endfor %}
             {% endif %}
             {% for certificate in certificates %}
               <div class="col-lg-4 col-md-6 certificate-item filter-app">
@@ -501,8 +521,8 @@
                   </div>
                 </div>
               </div>
-            {% endfor %}      
-          </div>  
+            {% endfor %}
+          </div>
 
         </div>
     </section><!-- End certificate Section -->
@@ -513,7 +533,7 @@
 
         <div class="section-title">
           <h2> {% translate 'سرويس هاي من' %} </h2>
-          
+
         </div>
 
         <div class="row">
@@ -538,9 +558,9 @@
 
         <div class="section-title">
           <h2>{% translate 'پرتفوليوي من ' %} </h2>
-          
+
         </div>
-        
+
         <div class="row portfolio-container">
           {% for project in projects %}
             <div class="col-lg-4 col-md-6 portfolio-item " >
@@ -566,9 +586,9 @@
 
         <div class="section-title">
           <h2>{% translate 'تماس با من ' %} </h2>
-          
+
         </div>
-    
+
         <div class="row mt-2">
 
           <div class="col-md-6 mb-4 d-flex align-items-stretch">
@@ -586,7 +606,7 @@
               <p>{{ userprofile.email }}</p>
             </div>
           </div>
-          
+
           <div class="col-md-12  mt-md-0 d-flex align-items-stretch">
             <div class="info-box">
               <i class="bx bx-share-alt"></i>
@@ -604,10 +624,10 @@
               </div>
             </div>
           </div>
-        </div> 
-        
+        </div>
+
           <form method="POST" class="php-email-form mt-4" action="." onsubmit="return checkform();">
-            
+
               {% csrf_token %}
               <div class="row">
                 <div class="col-md-6 form-group" >
@@ -615,7 +635,7 @@
                 </div>
                 <div class="col-md-6 form-group mt-3 mt-md-0">
                   {{ form.email }}
-                
+
                 </div>
               </div>
               <div class="form-group mt-3">
@@ -625,10 +645,10 @@
                 {{ form.message }}
               </div>
 
-            
+
               <div class="text-center mt-3"><button type="submit">{% translate 'ارسال پيام ' %}  </button></div>
-          </form> 
-      
+          </form>
+
       </div>
     </section><!-- End Contact Section -->
 
